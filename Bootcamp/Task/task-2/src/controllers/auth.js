@@ -103,9 +103,10 @@ exports.login = async (req, res) => {
     const token = jwt.sign({ id: userExist.id }, process.env.TOKEN_KEY)
 
     res.status(200).send({
-      status: 'success...',
+      status: 'success',
       data: {
-        name: userExist.name,
+        fullName: userExist.fullName,
+        username: userExist.userName,
         email: userExist.email,
         token,
       },
