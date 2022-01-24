@@ -11,10 +11,12 @@ const jwt = require('jsonwebtoken')
 exports.register = async (req, res) => {
   // our validation schema here
   const schema = Joi.object({
-    email: Joi.string().email().min(6).required(),
+    email: Joi.string().required(),
     userName: Joi.string().min(4).required(),
     password: Joi.string().min(6).required(),
     fullName: Joi.string().min(4).required(),
+    image: Joi.string().required(),
+    bio: Joi.string().required(),
   })
 
   // do validation and get error object from schema.validate
@@ -38,6 +40,8 @@ exports.register = async (req, res) => {
       email: req.body.email,
       userName: req.body.userName,
       fullName: req.body.fullName,
+      image: req.body.image,
+      bio: req.body.bio,
       password: hashedPassword,
     })
 
